@@ -6,17 +6,19 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import DetailsScreen from "./app/screens/DetailsScreen";
 import ScoreTracker from "./app/screens/ScoreTracker";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomePage} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
-        <Stack.Screen name="Scoretracker" component={ScoreTracker} />
-      </Stack.Navigator>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomePage} />
+        <Drawer.Screen name="Details" component={DetailsScreen} />
+        <Drawer.Screen name="Scoretracker" component={ScoreTracker} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
