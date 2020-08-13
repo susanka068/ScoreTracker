@@ -95,57 +95,47 @@ export class ScoreTracker extends Component {
   };
   handleExtraSingle = async () => {
     /* handles single run on extra delivery */
-    var current_score = this.state.total_score;
-    var updated_score = current_score + 1;
-    console.log(updated_score);
+    var { extra_run_on_current_ball } = this.state;
+    extra_run_on_current_ball = 1;
     this.setState({
       ...this.state,
-      total_score: updated_score,
-      extra_run_on_current_ball: 1,
+      extra_run_on_current_ball,
     });
   };
   handleExtraDouble = async () => {
     /* handles single run on extra delivery */
-    var current_score = this.state.total_score;
-    var updated_score = current_score + 2;
-    console.log(updated_score);
+    var { extra_run_on_current_ball } = this.state;
+    extra_run_on_current_ball = 1;
     this.setState({
       ...this.state,
-      total_score: updated_score,
-      extra_run_on_current_ball: 2,
+      extra_run_on_current_ball,
     });
   };
   handleExtraTriple = async () => {
     /* handles single run on extra delivery */
-    var current_score = this.state.total_score;
-    var updated_score = current_score + 3;
-    console.log(updated_score);
+    var { extra_run_on_current_ball } = this.state;
+    extra_run_on_current_ball = 3;
     this.setState({
       ...this.state,
-      total_score: updated_score,
-      extra_run_on_current_ball: 3,
+      extra_run_on_current_ball,
     });
   };
   handleExtraFour = async () => {
     /* handles single run on extra delivery */
-    var current_score = this.state.total_score;
-    var updated_score = current_score + 4;
-    console.log(updated_score);
+    var { extra_run_on_current_ball } = this.state;
+    extra_run_on_current_ball = 4;
     this.setState({
       ...this.state,
-      total_score: updated_score,
-      extra_run_on_current_ball: 4,
+      extra_run_on_current_ball,
     });
   };
   handleExtraSix = async () => {
     /* handles single run on extra delivery */
-    var current_score = this.state.total_score;
-    var updated_score = current_score + 6;
-    console.log(updated_score);
+    var { extra_run_on_current_ball } = this.state;
+    extra_run_on_current_ball = 6;
     this.setState({
       ...this.state,
-      total_score: updated_score,
-      extra_run_on_current_ball: 6,
+      extra_run_on_current_ball,
     });
   };
 
@@ -170,6 +160,12 @@ export class ScoreTracker extends Component {
       extra_run_on_current_ball: 0,
     });
   };
+  addExtraRuns = async () => {
+    var { extra_run_on_current_ball, total_score } = this.state;
+    total_score = total_score + extra_run_on_current_ball;
+    extra_run_on_current_ball = 0;
+    this.setState({ ...this.state, total_score, extra_run_on_current_ball });
+  };
   render() {
     var { total_score, total_ball, isModalVisible } = this.state;
     return (
@@ -191,9 +187,7 @@ export class ScoreTracker extends Component {
         <Modal
           isVisible={isModalVisible}
           backdropColor="white"
-          onModalHide={() => {
-            this.setState({ ...this.state, extra_run_on_current_ball: 0 });
-          }}
+          onModalHide={this.addExtraRuns}
         >
           <View>
             <Text>Extra runs ?</Text>

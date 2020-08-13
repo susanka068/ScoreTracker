@@ -22,6 +22,9 @@
     "web": {
       "favicon": "./app/assets/favicon.png"
     },
-    "description": "score"
+    "description": "score",
+    "android": {
+      "package": "com.bingob0ng.Cricket"
+    }
   }
 }
