@@ -4,6 +4,8 @@ import { StyleSheet, Text, View } from "react-native";
 import HomePage from "./app/screens/HomePage";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import DetailsScreen from "./app/screens/DetailsScreen";
+import ScoreTracker from "./app/screens/ScoreTracker";
 
 const Stack = createStackNavigator();
 
@@ -12,6 +14,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomePage} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Scoretracker" component={ScoreTracker} />
       </Stack.Navigator>
     </NavigationContainer>
   );
